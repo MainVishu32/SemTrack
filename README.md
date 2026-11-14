@@ -25,9 +25,9 @@ A personal, responsive semester-preparation dashboard built with React, TypeScri
    npm install
    ```
 
-2. In the Supabase dashboard, open **SQL Editor**, paste and run the complete migration at [`supabase/migrations/20261113000000_initial_schema.sql`](./supabase/migrations/20261113000000_initial_schema.sql).
+2. In the Supabase dashboard, open **SQL Editor**, paste and run the complete repair migration at [`supabase/migrations/20261113124500_repair_missing_semtrack_schema.sql`](./supabase/migrations/20261113124500_repair_missing_semtrack_schema.sql). If the schema is already installed, also run [`supabase/migrations/20261113132200_allow_user_exam_upserts.sql`](./supabase/migrations/20261113132200_allow_user_exam_upserts.sql) to allow users to insert a missing exam row for their own subject. Both migrations preserve Row Level Security and refresh the PostgREST schema cache as needed.
 
-   The migration creates the schema, RLS policies, indexes, exam timestamp trigger, and an `auth.users` trigger that provisions the five subjects, all 24 unchecked units, and five exams with no preset date.
+   The migration creates the schema, RLS policies, indexes, exam timestamp trigger, and an `auth.users` trigger that provisions the five subjects, all 24 units, and five exams with no preset date. Provisioning is idempotent, so existing exam dates and unit completion are preserved when the setup script is rerun.
 
 3. In Supabase **Project Settings → API** (or **Data API**), copy the project URL and the **publishable** key (or legacy `anon` key). Create a `.env` file in the project root:
 
