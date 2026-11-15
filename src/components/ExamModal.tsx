@@ -100,7 +100,7 @@ export const ExamModal: React.FC<ExamModalProps> = ({
           </div>
 
           <div className="glass-subtle flex items-center gap-2 rounded-2xl p-3 text-[12px] text-white/60">
-            <Clock3 size={14} className="text-[#10B96F] shrink-0" />
+            <Clock3 size={14} className="text-[#16C784] shrink-0" />
             Countdowns auto-calculate in IST (Asia/Kolkata).
           </div>
 

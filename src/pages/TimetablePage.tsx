@@ -42,7 +42,7 @@ export const TimetablePage: React.FC<TimetablePageProps> = ({
       {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-2 border-b border-white/10">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.06] border border-white/15 px-3.5 py-1 text-[11px] font-bold text-[#A78BFA] tracking-wider uppercase mb-3 shadow-sm">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] border border-white/10 px-3.5 py-1 text-[11px] font-bold text-[#16C784] tracking-wider uppercase mb-3">
             <CalendarDays size={12} strokeWidth={2.4} />
             Countdown Engine
           </div>
@@ -56,7 +56,7 @@ export const TimetablePage: React.FC<TimetablePageProps> = ({
 
         {/* IST Info Pill */}
         <div className="flex items-center gap-2 rounded-2xl bg-white/[0.04] border border-white/10 px-4 py-2 text-[11px] font-medium text-white/60">
-          <Clock3 size={13} className="text-[#10B96F]" />
+          <Clock3 size={13} className="text-[#16C784]" />
           <span>Calculated in IST (Asia/Kolkata)</span>
         </div>
       </div>
@@ -74,13 +74,13 @@ export const TimetablePage: React.FC<TimetablePageProps> = ({
               key={subject.id}
               className={`glass-card relative overflow-hidden rounded-3xl p-5 md:p-6 transition-all duration-300 ${
                 isNearest
-                  ? "border-[#10B96F]/50 shadow-emerald-glow bg-white/[0.06]"
+                  ? "border-[#16C784]/30 bg-[#16C784]/[0.04]"
                   : "border-white/10"
               }`}
             >
               {/* Highlight ribbon for nearest exam */}
               {isNearest && (
-                <div className="absolute top-0 right-0 bg-[#10B96F] text-black text-[9px] font-extrabold uppercase tracking-widest px-4 py-0.5 rounded-bl-xl shadow-sm flex items-center gap-1">
+                <div className="absolute top-0 right-0 bg-[#16C784] text-[#080A0E] text-[9px] font-extrabold uppercase tracking-widest px-4 py-0.5 rounded-bl-xl flex items-center gap-1">
                   <Sparkles size={10} />
                   Nearest Exam
                 </div>
@@ -92,7 +92,7 @@ export const TimetablePage: React.FC<TimetablePageProps> = ({
                   <div
                     className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl font-display font-extrabold text-[14px] shadow-sm transition ${
                       isNearest
-                        ? "bg-[#10B96F] text-black shadow-emerald-glow"
+                        ? "bg-[#16C784] text-[#080A0E]"
                         : "btn-float text-white"
                     }`}
                   >
@@ -111,12 +111,12 @@ export const TimetablePage: React.FC<TimetablePageProps> = ({
 
                     <div className="flex items-center gap-4 mt-1 text-[13px] text-white/60">
                       <span className="flex items-center gap-1.5">
-                        <CalendarDays size={14} className="text-[#10B96F]" />
+                        <CalendarDays size={14} className="text-[#16C784]" />
                         <span>{formatExamDate(subject.exam?.exam_date ?? null)}</span>
                       </span>
                       {subject.exam?.exam_time && (
                         <span className="flex items-center gap-1.5">
-                          <Clock3 size={14} className="text-[#10B96F]" />
+                          <Clock3 size={14} className="text-[#16C784]" />
                           <span>{formatExamTime(subject.exam.exam_time)}</span>
                         </span>
                       )}
@@ -129,9 +129,9 @@ export const TimetablePage: React.FC<TimetablePageProps> = ({
                   <span
                     className={`px-3.5 py-1.5 rounded-full text-[12px] font-bold shadow-sm ${
                       countdown.tone === "urgent"
-                        ? "bg-rose-500/20 text-rose-300 border border-rose-500/40 animate-pulse"
+                        ? "bg-[#16C784]/10 text-[#16C784] border border-[#16C784]/25"
                         : countdown.tone === "soon"
-                        ? "bg-[#10B96F]/20 text-[#34D399] border border-[#10B96F]/40"
+                        ? "bg-[#16C784]/10 text-[#16C784] border border-[#16C784]/25"
                         : "bg-white/[0.06] text-white/70 border border-white/10"
                     }`}
                   >

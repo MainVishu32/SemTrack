@@ -65,10 +65,8 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
   }
 
   return (
-    <div className="min-h-screen flex flex-col lg:flex-row bg-[#050507] text-white relative overflow-hidden select-none">
-      {/* Ambient Radial Lights */}
-      <div className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full bg-[#8B5CF6]/10 blur-[120px] pointer-events-none" />
-      <div className="absolute -bottom-32 -right-32 w-[600px] h-[600px] rounded-full bg-[#10B96F]/10 blur-[120px] pointer-events-none" />
+    <div className="facet-canvas min-h-screen flex flex-col lg:flex-row text-white relative overflow-hidden">
+      <div className="absolute -bottom-40 right-1/4 w-[520px] h-[520px] rounded-full bg-[#16C784]/[0.035] blur-[120px] pointer-events-none" />
 
       {/* Left Column: Glass Shard Hero Feature View */}
       <div className="flex-1 flex flex-col justify-between p-8 md:p-12 xl:p-16 relative z-10 border-b lg:border-b-0 lg:border-r border-white/10">
@@ -76,14 +74,14 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-white/[0.06] border border-white/15 shadow-smoked-glass">
-              <GraduationCap size={22} className="text-[#10B96F]" strokeWidth={2.2} />
+              <GraduationCap size={22} className="text-[#16C784]" strokeWidth={2.2} />
             </div>
             <div>
               <div className="font-display text-[18px] font-extrabold tracking-[0.14em] text-white">
                 SEMTRACK
               </div>
               <div className="text-[10px] uppercase font-bold tracking-[0.16em] text-white/50">
-                Smoked Glass Academic OS
+                Midnight Glass Academic OS
               </div>
             </div>
           </div>
@@ -93,21 +91,21 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
             onClick={() => setShowFull3DHero(true)}
             className="btn-glass inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold"
           >
-            <Sparkles size={13} className="text-[#A78BFA]" />
+            <Sparkles size={13} className="text-[#16C784]" />
             <span>Interactive 3D Shards</span>
           </button>
         </div>
 
         {/* Center Main Punchline */}
         <div className="my-10 max-w-xl space-y-6">
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.05] border border-[#10B96F]/30 px-3.5 py-1 text-[11px] font-bold text-[#10B96F] tracking-wider uppercase shadow-sm">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] border border-[#16C784]/25 px-3.5 py-1 text-[11px] font-bold text-[#16C784] tracking-wider uppercase">
             <Target size={13} strokeWidth={2.5} />
             Semester Goal: 9+ CGPA
           </div>
 
           <h1 className="font-display text-[36px] md:text-[46px] font-extrabold leading-[1.08] text-white tracking-tight">
             Designed in glass.<br />
-            <span className="bg-gradient-to-r from-white via-[#c4b5fd] to-[#a78bfa] bg-clip-text text-transparent">
+            <span className="text-[#A0A8B4]">
               Engineered for exams.
             </span>
           </h1>
@@ -119,13 +117,13 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
           {/* Quick Course Highlights in Smoked Glass Cards */}
           <div className="pt-2 grid grid-cols-2 gap-4">
             <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-md shadow-smoked-glass">
-              <BookOpen size={18} className="text-[#A78BFA] mb-2" />
+              <BookOpen size={18} className="text-[#16C784] mb-2" />
               <div className="font-display text-[14px] font-bold text-white">5 Core Courses</div>
               <div className="text-[11px] text-white/50 mt-0.5">TOC, AI, Networks, Cloud & IPR</div>
             </div>
 
             <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 backdrop-blur-md shadow-smoked-glass">
-              <CalendarDays size={18} className="text-[#10B96F] mb-2" />
+              <CalendarDays size={18} className="text-[#16C784] mb-2" />
               <div className="font-display text-[14px] font-bold text-white">Exam Timetable</div>
               <div className="text-[11px] text-white/50 mt-0.5">IST live countdown engine</div>
             </div>
@@ -134,8 +132,8 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
 
         {/* Bottom Tagline */}
         <div className="text-[12px] text-white/40 flex items-center justify-between border-t border-white/10 pt-5">
-          <span>Smoked Glassmorphism Design System</span>
-          <span className="flex items-center gap-1.5 text-emerald-400 font-mono text-[11px]">
+          <span>Midnight Glass Academic System</span>
+          <span className="flex items-center gap-1.5 text-[#16C784] font-mono text-[11px]">
             <ShieldCheck size={14} /> Cloud Synced
           </span>
         </div>
@@ -156,7 +154,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                 }}
                 className={`flex-1 py-2 text-[12px] font-bold rounded-xl transition-all ${
                   mode === "signin"
-                    ? "bg-white/15 text-white shadow-sm border border-white/15"
+                    ? "bg-white/10 text-white border border-white/10"
                     : "text-white/50 hover:text-white"
                 }`}
               >
@@ -171,7 +169,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                 }}
                 className={`flex-1 py-2 text-[12px] font-bold rounded-xl transition-all ${
                   mode === "signup"
-                    ? "bg-[#10B96F] text-black shadow-sm font-extrabold"
+                    ? "bg-[#16C784] text-[#080A0E] font-extrabold"
                     : "text-white/50 hover:text-white"
                 }`}
               >
@@ -196,10 +194,11 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                 <label className="block text-[12px] font-semibold text-white/80 mb-1.5">
                   Email Address
                 </label>
-                <div className="relative">
+                <div className="input-wrapper">
                   <Mail
-                    size={16}
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/40"
+                    size={18}
+                    strokeWidth={1.8}
+                    className="input-icon"
                   />
                   <input
                     required
@@ -208,7 +207,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="student@example.com"
-                    className="glass-input h-11 w-full pl-10 pr-4 text-[13px] font-medium"
+                    className="glass-input glass-input--icon h-11 w-full pr-4 text-[13px] font-medium"
                   />
                 </div>
               </div>
@@ -217,10 +216,11 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                 <label className="block text-[12px] font-semibold text-white/80 mb-1.5">
                   Password
                 </label>
-                <div className="relative">
+                <div className="input-wrapper">
                   <Lock
-                    size={16}
-                    className="absolute left-3.5 top-1/2 -translate-y-1/2 text-white/40"
+                    size={18}
+                    strokeWidth={1.8}
+                    className="input-icon"
                   />
                   <input
                     required
@@ -230,7 +230,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Minimum 6 characters"
-                    className="glass-input h-11 w-full pl-10 pr-4 text-[13px] font-medium"
+                    className="glass-input glass-input--icon h-11 w-full pr-4 text-[13px] font-medium"
                   />
                 </div>
               </div>
@@ -239,7 +239,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
               {error && (
                 <div
                   role="alert"
-                  className="rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-[12px] font-medium text-red-400"
+                  className="rounded-xl border border-white/10 bg-[#171C24] p-3 text-[12px] font-medium text-[#F5F6F8]"
                 >
                   {error}
                 </div>
@@ -249,7 +249,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
               {message && (
                 <div
                   role="status"
-                  className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-3 text-[12px] font-medium text-emerald-400"
+                  className="rounded-xl border border-[#16C784]/25 bg-[#16C784]/[0.08] p-3 text-[12px] font-medium text-[#16C784]"
                 >
                   {message}
                 </div>
@@ -259,7 +259,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
               <button
                 type="submit"
                 disabled={loading}
-                className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#10B96F] to-[#059669] hover:from-[#34D399] hover:to-[#10B96F] text-black text-[13px] font-bold shadow-emerald-glow active:scale-95 transition disabled:opacity-60"
+                className="flex h-11 w-full items-center justify-center gap-2 rounded-xl bg-[#16C784] hover:opacity-90 text-[#080A0E] text-[13px] font-bold active:scale-[0.98] transition disabled:opacity-60"
               >
                 <span>
                   {loading
@@ -273,7 +273,7 @@ export const AuthScreen: React.FC<AuthScreenProps> = ({
             </form>
 
             <div className="mt-6 pt-5 border-t border-white/10 flex items-center justify-center gap-1.5 text-[11px] text-white/40">
-              <ShieldCheck size={13} className="text-[#10B96F]" />
+              <ShieldCheck size={13} className="text-[#16C784]" />
               <span>Protected by Supabase Row-Level Security</span>
             </div>
           </div>

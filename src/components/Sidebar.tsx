@@ -59,7 +59,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
       )}
 
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-[268px] flex-col justify-between 
+        className={`fixed inset-y-0 left-0 z-50 flex w-[268px] flex-col justify-between overflow-y-auto
         glass-deep lg:rounded-r-3xl m-2 lg:m-0
         px-5 py-6 transition-transform duration-300 ease-out border-r border-white/10
         lg:translate-x-0 ${mobileNav ? "translate-x-0" : "-translate-x-full"}`}
@@ -68,16 +68,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
           {/* ─── Logo & Academic Brand ─── */}
           <div className="flex items-center justify-between px-1 mb-8">
             <div className="flex items-center gap-3">
-              <div className="relative flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-[#10B96F] to-[#059669] text-white shadow-emerald-glow">
+              <div className="relative flex h-10 w-10 items-center justify-center rounded-2xl bg-[#16C784] text-[#080A0E]">
                 <GraduationCap size={20} strokeWidth={2.2} />
-                <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-[#A78BFA] shadow-facet-glow animate-pulse" />
+                <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full border-2 border-[#080A0E] bg-[#16C784]" />
               </div>
               <div>
                 <div className="font-display font-extrabold text-[16px] tracking-tight text-white">
                   SEMTRACK
                 </div>
                 <div className="flex items-center gap-1.5 text-[11px] text-white/50">
-                  <Zap size={10} className="text-[#10B96F]" />
+                  <Zap size={10} className="text-[#16C784]" />
                   <span className="font-mono">Academic OS</span>
                 </div>
               </div>
@@ -104,18 +104,21 @@ export const Sidebar: React.FC<SidebarProps> = ({
                   }}
                   className={`group relative flex w-full items-center gap-3 rounded-2xl px-3.5 py-2.5 text-left text-[13px] font-medium transition-all duration-200 select-none ${
                     active
-                      ? "bg-white/[0.12] text-white font-semibold border border-white/20 shadow-smoked-glass"
+                      ? "bg-[#16C784]/10 text-white font-semibold border border-[#16C784]/20"
                       : "text-white/60 hover:text-white hover:bg-white/[0.05]"
                   }`}
                 >
                   <Icon
                     size={16}
                     strokeWidth={active ? 2.2 : 1.8}
-                    className={active ? "text-[#10B96F]" : "text-white/40 group-hover:text-[#A78BFA] transition"}
+                    className={active ? "text-[#16C784]" : "text-white/45 transition"}
                   />
                   <span>{label}</span>
                   {active ? (
-                    <span className="ml-auto h-1.5 w-1.5 rounded-full bg-[#10B96F] shadow-emerald-glow" />
+                    <>
+                      <span className="absolute left-0 top-1/4 h-1/2 w-0.5 rounded-r-full bg-[#16C784]" />
+                      <span className="ml-auto h-1.5 w-1.5 rounded-full bg-[#16C784]" />
+                    </>
                   ) : (
                     <ChevronRight size={13} className="ml-auto opacity-0 group-hover:opacity-40 transition" />
                   )}
@@ -131,25 +134,25 @@ export const Sidebar: React.FC<SidebarProps> = ({
           <div className="glass-subtle rounded-2xl p-4">
             <div className="flex items-center justify-between text-[12px] font-semibold mb-1">
               <span className="flex items-center gap-1.5 text-white/80">
-                <Target size={13} className="text-[#10B96F]" />
+                <Target size={13} className="text-[#16C784]" />
                 Semester Target
               </span>
-              <span className="font-mono text-[#A78BFA]">9+ CGPA</span>
+              <span className="font-mono text-[#16C784]">9+ CGPA</span>
             </div>
-            <div className="h-2 w-full overflow-hidden rounded-full bg-white/10 mt-2">
+            <div className="h-2 w-full overflow-hidden rounded-full bg-[#29313C] mt-2">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-[#10B96F] via-[#34D399] to-[#A78BFA] transition-all duration-500 shadow-[0_0_12px_rgba(16,185,111,0.4)]"
+                className="h-full rounded-full bg-[#16C784] transition-all duration-500"
                 style={{ width: `${Math.max(overallProgress, 2)}%` }}
               />
             </div>
-            <div className="text-right font-mono text-[11px] text-[#10B96F] mt-1.5 font-semibold">
+            <div className="text-right font-mono text-[11px] text-[#16C784] mt-1.5 font-semibold">
               {overallProgress}% syllabus
             </div>
           </div>
 
           {/* User Account Bar */}
           <div className="glass-subtle rounded-2xl p-3 flex items-center gap-2.5">
-            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-[#10B96F] to-[#059669] text-white font-mono text-[13px] font-bold shadow-emerald-glow">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[#16C784] text-[#080A0E] font-mono text-[13px] font-bold">
               {userInitial}
             </div>
             <div className="min-w-0 flex-1">
@@ -157,7 +160,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 {userEmail || "Student"}
               </div>
               <div className="font-mono text-[10px] text-white/40 flex items-center gap-1">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#10B96F] shadow-emerald-glow" />
+                <span className="h-1.5 w-1.5 rounded-full bg-[#16C784]" />
                 Cloud Synced
               </div>
             </div>

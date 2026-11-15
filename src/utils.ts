@@ -107,7 +107,7 @@ export function getGreeting(name: string = "Vishal"): { greeting: string; subtit
   else if (hour >= 17) prefix = "Good evening";
 
   return {
-    greeting: `${prefix}, ${name}.`,
+    greeting: `${prefix}, ${name}!`,
     subtitle: "Your progress today brings you closer to your goal.",
   };
 }

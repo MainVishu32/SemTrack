@@ -27,7 +27,7 @@ export const SubjectCard: React.FC<SubjectCardProps> = ({
     <div
       className={`glass-card rounded-3xl transition-all relative overflow-hidden ${
         allDone
-          ? "border-[#10B96F]/50 shadow-emerald-glow bg-white/[0.06]"
+          ? "border-[#16C784]/35 bg-[#16C784]/[0.04]"
           : "border-white/10"
       } ${compact ? "p-5" : "p-6"}`}
     >
@@ -38,7 +38,7 @@ export const SubjectCard: React.FC<SubjectCardProps> = ({
       <div className="flex items-start justify-between gap-3 mb-4">
         <div className="flex items-center gap-3">
           {/* Code chip */}
-          <div className="btn-float flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl font-mono font-bold text-[13px] text-white">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-[#16C784]/20 bg-[#16C784]/10 font-mono font-bold text-[13px] text-[#16C784]">
             {meta.code}
           </div>
           <div>
@@ -55,7 +55,7 @@ export const SubjectCard: React.FC<SubjectCardProps> = ({
             <div className="flex items-center gap-2 mt-0.5 text-[12px] text-white/50">
               <span>{meta.category}</span>
               <span>·</span>
-              <span className="font-mono font-semibold text-[#10B96F]">
+              <span className="font-mono font-semibold text-[#16C784]">
                 {done}/{subject.total_units} units
               </span>
             </div>
@@ -63,7 +63,7 @@ export const SubjectCard: React.FC<SubjectCardProps> = ({
         </div>
 
         <div className="flex items-center gap-2">
-          <span className="font-mono text-[16px] font-bold text-[#10B96F]">{pct}%</span>
+          <span className="font-mono text-[16px] font-bold text-[#16C784]">{pct}%</span>
           {onReset && (
             <button
               onClick={onReset}

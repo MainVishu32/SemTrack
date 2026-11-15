@@ -37,7 +37,7 @@ export function App() {
   const [dataReady, setDataReady] = useState(false);
   const [page, setPage] = useState<Page>("Dashboard");
   const [darkMode, setDarkMode] = useState<boolean>(
-    () => localStorage.getItem("semtrack-theme") === "dark"
+    () => localStorage.getItem("semtrack-theme") !== "light"
   );
   const [mobileNav, setMobileNav] = useState(false);
   const [toast, setToast] = useState("");
@@ -193,18 +193,18 @@ export function App() {
   const motivationalQuote =
     motivationalQuotes[Math.floor(Date.now() / 86_400_000) % motivationalQuotes.length];
 
-  // Derive user name for greeting
   const userName = useMemo(() => {
-    if (session?.user?.user_metadata?.full_name) {
-      return session.user.user_metadata.full_name.split(" ")[0];
+    const metadataName =
+      session?.user?.user_metadata?.full_name ?? session?.user?.user_metadata?.name;
+    if (typeof metadataName === "string" && metadataName.trim()) {
+      return metadataName.trim().split(/\s+/)[0];
     }
-    if (session?.user?.email) {
-      const emailPrefix = session.user.email.split("@")[0];
-      if (emailPrefix.toLowerCase().includes("vishal")) return "Vishal";
-      const cap = emailPrefix.charAt(0).toUpperCase() + emailPrefix.slice(1);
-      return cap.length > 2 && !cap.match(/\d{4,}/) ? cap : "Vishal";
-    }
-    return "Vishal";
+
+    const emailPrefix = session?.user?.email?.split("@")[0] ?? "";
+    const firstName = emailPrefix.replace(/[._-]+/g, " ").trim().split(/\s+/)[0] ?? "";
+    return firstName
+      ? firstName.charAt(0).toUpperCase() + firstName.slice(1)
+      : "Student";
   }, [session]);
 
   async function toggleUnit(subjectId: string, unitId: string, completed: boolean) {
@@ -442,7 +442,7 @@ export function App() {
   if (!dataReady) return <LoadingScreen label="Loading your semester workspace..." />;
 
   return (
-    <div className={`min-h-screen bg-[#E8DDC9] dark:bg-[#171717] text-[#24211E] dark:text-[#F4EBDD] bg-ambient-grain transition-colors ${darkMode ? "dark" : ""}`}>
+    <div className={`facet-canvas min-h-screen text-[#F5F6F8] ${darkMode ? "dark" : ""}`}>
       {/* Sidebar Navigation */}
       <Sidebar
         page={page}
@@ -465,12 +465,12 @@ export function App() {
         />
 
         {/* Page Body Container */}
-        <main className="flex-1 px-5 py-6 md:px-10 md:py-8 max-w-[1400px] w-full mx-auto">
+        <main className="flex-1 px-4 py-6 sm:px-5 md:px-8 md:py-8 xl:px-10 max-w-[1480px] w-full mx-auto">
           {/* Error Banner */}
           {error && (
             <div
               role="alert"
-              className="mb-6 flex items-start gap-3 rounded-2xl border border-red-500/30 bg-red-500/10 p-4 text-[13px] font-medium text-red-600 dark:text-red-400 animate-rise-in shadow-sm"
+              className="mb-6 flex items-start gap-3 rounded-2xl border border-white/10 bg-[#11151C] p-4 text-[13px] font-medium text-[#F5F6F8] animate-rise-in"
             >
               <AlertCircle size={18} className="shrink-0 mt-0.5" />
               <span className="flex-1">{error}</span>

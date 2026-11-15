@@ -29,7 +29,7 @@ export const SubjectsPage: React.FC<SubjectsPageProps> = ({
       {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-2 border-b border-white/10">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.06] border border-white/15 px-3.5 py-1 text-[11px] font-bold text-[#A78BFA] tracking-wider uppercase mb-3 shadow-sm">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] border border-white/10 px-3.5 py-1 text-[11px] font-bold text-[#16C784] tracking-wider uppercase mb-3">
             <BookOpen size={12} strokeWidth={2.4} />
             Semester Syllabus
           </div>
@@ -53,7 +53,7 @@ export const SubjectsPage: React.FC<SubjectsPageProps> = ({
           </div>
           <div className="w-24">
             <ProgressBar value={overallPercentage} size="sm" />
-            <div className="text-right text-[10px] font-extrabold text-[#34D399] mt-0.5">
+            <div className="text-right text-[10px] font-extrabold text-[#16C784] mt-0.5">
               {overallPercentage}%
             </div>
           </div>
@@ -63,10 +63,10 @@ export const SubjectsPage: React.FC<SubjectsPageProps> = ({
       {/* Cloud Sync Status Banner */}
       <div className="flex items-center justify-between rounded-2xl bg-white/[0.04] border border-white/10 px-5 py-3 text-[12px] text-white/60">
         <div className="flex items-center gap-2">
-          <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-emerald-glow" />
+          <span className="h-2 w-2 rounded-full bg-[#16C784]" />
           <span>All updates save automatically to your cloud database account in real-time.</span>
         </div>
-        <span className="text-[11px] font-bold text-[#34D399] font-mono">Auto-saving</span>
+        <span className="text-[11px] font-bold text-[#16C784] font-mono">Auto-saving</span>
       </div>
 
       {/* Grid of 5 Redesigned Subject Cards */}

@@ -65,7 +65,7 @@ export const AnalyticsPage: React.FC<AnalyticsPageProps> = ({
       {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 pb-2 border-b border-white/10">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.06] border border-white/15 px-3.5 py-1 text-[11px] font-bold text-[#A78BFA] tracking-wider uppercase mb-3 shadow-sm">
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] border border-white/10 px-3.5 py-1 text-[11px] font-bold text-[#16C784] tracking-wider uppercase mb-3">
             <TrendingUp size={12} strokeWidth={2.4} />
             Performance Insights
           </div>
@@ -138,9 +138,8 @@ export const AnalyticsPage: React.FC<AnalyticsPageProps> = ({
               />
               <defs>
                 <linearGradient id="analyticsGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stopColor="#10B96F" />
-                  <stop offset="50%" stopColor="#34D399" />
-                  <stop offset="100%" stopColor="#A78BFA" />
+                  <stop offset="0%" stopColor="#16C784" />
+                  <stop offset="100%" stopColor="#16C784" />
                 </linearGradient>
               </defs>
             </svg>
@@ -174,7 +173,7 @@ export const AnalyticsPage: React.FC<AnalyticsPageProps> = ({
             <div className="grid grid-cols-2 gap-3 pt-2 border-t border-white/10">
               <div className="p-3 rounded-2xl bg-white/[0.04] border border-white/5">
                 <div className="text-[10px] uppercase font-bold text-white/40">Highest Coverage</div>
-                <div className="font-display text-[14px] font-bold text-[#10B96F] truncate mt-0.5">
+                <div className="font-display text-[14px] font-bold text-[#16C784] truncate mt-0.5">
                   {bestSubject ? parseSubjectMeta(bestSubject.subject_name).displayName : "—"}
                 </div>
                 <div className="text-[11px] font-mono text-white/50">{bestRate}% done</div>
@@ -182,7 +181,7 @@ export const AnalyticsPage: React.FC<AnalyticsPageProps> = ({
 
               <div className="p-3 rounded-2xl bg-white/[0.04] border border-white/5">
                 <div className="text-[10px] uppercase font-bold text-white/40">Needs Focus</div>
-                <div className="font-display text-[14px] font-bold text-[#A78BFA] truncate mt-0.5">
+                <div className="font-display text-[14px] font-bold text-[#16C784] truncate mt-0.5">
                   {lowestSubject ? parseSubjectMeta(lowestSubject.subject_name).displayName : "—"}
                 </div>
                 <div className="text-[11px] font-mono text-white/50">{lowestRate}% done</div>
@@ -195,7 +194,7 @@ export const AnalyticsPage: React.FC<AnalyticsPageProps> = ({
         <div className="glass-card rounded-3xl p-6 md:p-8 border border-white/10 flex flex-col justify-between shadow-smoked-glass">
           <div>
             <div className="flex items-center gap-2 mb-4">
-              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#A78BFA]/20 text-[#A78BFA] border border-[#A78BFA]/30">
+              <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#16C784]/10 text-[#16C784] border border-[#16C784]/20">
                 <Award size={15} />
               </span>
               <h3 className="font-display text-[16px] font-bold text-white">
@@ -212,7 +211,7 @@ export const AnalyticsPage: React.FC<AnalyticsPageProps> = ({
                 <span className="text-white/80 font-medium">1. Complete 10 Units</span>
                 <span
                   className={`font-mono font-bold ${
-                    completedUnits >= 10 ? "text-[#10B96F]" : "text-white/40"
+                    completedUnits >= 10 ? "text-[#16C784]" : "text-white/40"
                   }`}
                 >
                   {completedUnits >= 10 ? "Achieved ✓" : `${completedUnits}/10`}
@@ -223,7 +222,7 @@ export const AnalyticsPage: React.FC<AnalyticsPageProps> = ({
                 <span className="text-white/80 font-medium">2. Complete 18 Units (75%)</span>
                 <span
                   className={`font-mono font-bold ${
-                    completedUnits >= 18 ? "text-[#10B96F]" : "text-white/40"
+                    completedUnits >= 18 ? "text-[#16C784]" : "text-white/40"
                   }`}
                 >
                   {completedUnits >= 18 ? "Achieved ✓" : `${completedUnits}/18`}
@@ -234,7 +233,7 @@ export const AnalyticsPage: React.FC<AnalyticsPageProps> = ({
                 <span className="text-white/80 font-medium">3. Full Mastery (24 Units)</span>
                 <span
                   className={`font-mono font-bold ${
-                    completedUnits === 24 ? "text-[#10B96F]" : "text-white/40"
+                    completedUnits === 24 ? "text-[#16C784]" : "text-white/40"
                   }`}
                 >
                   {completedUnits === 24 ? "Achieved ✓" : `${completedUnits}/24`}
@@ -282,7 +281,7 @@ export const AnalyticsPage: React.FC<AnalyticsPageProps> = ({
                   <span className="text-[12px] font-mono text-white/50">
                     {done}/{subject.total_units} units
                   </span>
-                  <span className="font-mono text-[14px] font-bold text-[#10B96F]">{rate}%</span>
+                  <span className="font-mono text-[14px] font-bold text-[#16C784]">{rate}%</span>
                 </div>
               </div>
             );

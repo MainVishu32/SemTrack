@@ -26,7 +26,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({
     <div className="space-y-8 animate-rise-in max-w-4xl select-none text-white">
       {/* Page Header */}
       <div className="pb-2 border-b border-white/10">
-        <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.06] border border-white/15 px-3.5 py-1 text-[11px] font-bold text-[#A78BFA] tracking-wider uppercase mb-3 shadow-sm">
+        <div className="inline-flex items-center gap-2 rounded-full bg-white/[0.04] border border-white/10 px-3.5 py-1 text-[11px] font-bold text-[#16C784] tracking-wider uppercase mb-3">
           <Sliders size={12} strokeWidth={2.4} />
           Configuration
         </div>
@@ -44,11 +44,11 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <div className="flex items-center gap-2 text-[14px] font-bold text-white">
-                <Sun size={17} className="text-[#10B96F]" />
-                <span>Ambient Lighting & Theme</span>
+                <Sun size={17} className="text-[#16C784]" />
+                <span>Appearance & Theme</span>
               </div>
               <p className="mt-1 text-[12px] text-white/50">
-                Smoked Glass is active with dynamic ambient background glow.
+                Choose standard glass surfaces or a higher-contrast dark theme.
               </p>
             </div>
 
@@ -58,24 +58,24 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({
                 onClick={() => setDarkMode(true)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[12px] font-bold transition-all ${
                   darkMode
-                    ? "bg-white/15 text-white shadow-sm border border-white/15"
+                    ? "bg-white/10 text-white border border-white/10"
                     : "text-white/50 hover:text-white"
                 }`}
               >
-                <Moon size={14} className="text-[#A78BFA]" />
-                Smoked Glass (Dark)
+                <Moon size={14} className="text-[#16C784]" />
+                Midnight Glass
               </button>
               <button
                 type="button"
                 onClick={() => setDarkMode(false)}
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-[12px] font-bold transition-all ${
                   !darkMode
-                    ? "bg-[#10B96F] text-black shadow-emerald-glow"
+                    ? "bg-[#16C784] text-[#080A0E]"
                     : "text-white/50 hover:text-white"
                 }`}
               >
                 <Sun size={14} />
-                High Contrast
+                High Contrast Dark
               </button>
             </div>
           </div>
@@ -84,7 +84,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({
         {/* User Account Section */}
         <section className="glass-card rounded-3xl p-6 md:p-7 border border-white/10 shadow-smoked-glass">
           <div className="flex items-center gap-2 text-[14px] font-bold text-white mb-1">
-            <User size={17} className="text-[#A78BFA]" />
+            <User size={17} className="text-[#16C784]" />
             <span>Account Profile</span>
           </div>
           <p className="text-[12px] text-white/50 mb-4">
@@ -101,7 +101,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({
               </div>
             </div>
 
-            <div className="flex items-center gap-2 text-[12px] text-emerald-400 font-mono">
+            <div className="flex items-center gap-2 text-[12px] text-[#16C784] font-mono">
               <ShieldCheck size={16} />
               <span>Row-Level Security Active</span>
             </div>
@@ -111,7 +111,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({
         {/* Database & Sync Status */}
         <section className="glass-card rounded-3xl p-6 md:p-7 border border-white/10 shadow-smoked-glass">
           <div className="flex items-center gap-2 text-[14px] font-bold text-white mb-1">
-            <Cloud size={17} className="text-[#10B96F]" />
+            <Cloud size={17} className="text-[#16C784]" />
             <span>Cloud Database Sync</span>
           </div>
           <p className="text-[12px] text-white/50 mb-4">
@@ -125,20 +125,20 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({
             </div>
             <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/5">
               <div className="text-white/40 text-[10px] uppercase font-bold">24 Units</div>
-              <div className="font-bold text-[#10B96F] mt-0.5">Synced</div>
+              <div className="font-bold text-[#16C784] mt-0.5">Synced</div>
             </div>
             <div className="p-3.5 rounded-2xl bg-white/[0.04] border border-white/5">
               <div className="text-white/40 text-[10px] uppercase font-bold">Timetable</div>
-              <div className="font-bold text-[#A78BFA] mt-0.5">IST Auto-calc</div>
+              <div className="font-bold text-[#16C784] mt-0.5">IST Auto-calc</div>
             </div>
           </div>
         </section>
 
         {/* Danger Zone: Reset Syllabus Progress */}
-        <section className="rounded-3xl p-6 md:p-7 border border-rose-500/20 bg-rose-500/[0.04]">
+        <section className="rounded-3xl p-6 md:p-7 border border-white/10 bg-[#11151C]">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <div className="text-[14px] font-bold text-rose-300">
+              <div className="text-[14px] font-bold text-white">
                 Reset All Syllabus Progress
               </div>
               <p className="text-[12px] text-white/50 mt-1 max-w-lg">
@@ -149,7 +149,7 @@ export const SettingsPage: React.FC<SettingsPageProps> = ({
             <button
               type="button"
               onClick={resetAll}
-              className="btn-float flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl border border-rose-500/30 text-rose-300 hover:bg-rose-500/10 text-[12px] font-bold transition shrink-0"
+              className="btn-float flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-[#A0A8B4] hover:text-white text-[12px] font-bold transition shrink-0"
             >
               <RotateCcw size={14} />
               <span>Reset Progress</span>

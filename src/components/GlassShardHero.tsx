@@ -77,7 +77,7 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
 
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x050507);
+    scene.background = new THREE.Color(0x080a0e);
 
     // Camera: perspective, fov 30°, placed so 1 world unit = 1 CSS px at z = 0
     const camera = new THREE.PerspectiveCamera(30, 1, 1, 10000);
@@ -91,12 +91,12 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
     scene.environment = envTex;
     scene.environmentIntensity = 0.42;
 
-    // Key light: soft white-blue light from top-left
-    const keyLight = new THREE.DirectionalLight(0xd8e8ff, 2.2);
+    // Key light: soft neutral light from top-left
+    const keyLight = new THREE.DirectionalLight(0xf5f6f8, 1.8);
     keyLight.position.set(-800, 1100, 850);
     scene.add(keyLight);
 
-    const fillLight = new THREE.DirectionalLight(0x38384a, 0.8);
+    const fillLight = new THREE.DirectionalLight(0x737c89, 0.45);
     fillLight.position.set(600, -500, 400);
     scene.add(fillLight);
 
@@ -107,24 +107,22 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
     const backGroup = new THREE.Group();
     scene.add(backGroup);
 
-    // Lavender cursor glow uniforms
+    // Subtle emerald cursor glow uniforms
     const cursorGlowUniforms = {
       uPointerWorld: { value: new THREE.Vector3(0, 0, 0) },
       uPointerGlow: { value: 0 },
       uGlowScale: { value: 300 },
     };
 
-    function createGlassMaterial(options: { iridescence?: number; noCursorGlow?: boolean } = {}) {
+    function createGlassMaterial(options: { noCursorGlow?: boolean } = {}) {
       const mat = new THREE.MeshPhysicalMaterial({
-        color: new THREE.Color(0x17171b),
+        color: new THREE.Color(0x11151c),
         roughness: 0.36,
         metalness: 0.04,
         clearcoat: 0.7,
         clearcoatRoughness: 0.12,
         specularIntensity: 0.7,
-        iridescence: options.iridescence !== undefined ? options.iridescence : 0.55,
-        iridescenceIOR: 1.3,
-        iridescenceThicknessRange: [250, 650],
+        iridescence: 0,
         envMapIntensity: 1.0,
         transparent: true,
         opacity: 0.98,
@@ -157,8 +155,8 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
             `
             float d = length(vGlassWorldPos.xy - uPointerWorld.xy);
             float glowExp = exp(-1.6 * pow(d / max(uGlowScale, 1.0), 2.0));
-            vec3 lavenderGlow = vec3(0.42, 0.37, 0.62) * 0.16 * glowExp * uPointerGlow;
-            gl_FragColor.rgb += lavenderGlow;
+            vec3 accentGlow = vec3(0.086, 0.78, 0.518) * 0.05 * glowExp * uPointerGlow;
+            gl_FragColor.rgb += accentGlow;
             #include <dithering_fragment>
             `
           );
@@ -168,7 +166,7 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
     }
 
     const glassMaterial = createGlassMaterial();
-    const backShardMaterial = createGlassMaterial({ iridescence: 0.35, noCursorGlow: true });
+    const backShardMaterial = createGlassMaterial({ noCursorGlow: true });
 
     // Sizing & coordinates
     let W = window.innerWidth;
@@ -216,7 +214,7 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
       const eyebrowY = panelHeight * 0.135;
       const eyebrowSize = Math.max(10, 11 * S);
       pageCtx.font = `500 ${eyebrowSize}px 'Inter', sans-serif`;
-      pageCtx.fillStyle = "rgba(167, 139, 250, 0.75)";
+      pageCtx.fillStyle = "rgba(22, 199, 132, 0.8)";
       pageCtx.letterSpacing = "0.2em";
       pageCtx.fillText("ACADEMIC PRODUCTIVITY OS · 5 CORE COURSES", panelWidth * 0.08, eyebrowY);
 
@@ -229,7 +227,7 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
 
       const grad = pageCtx.createLinearGradient(0, headlineY - lineH, 0, headlineY + lineH);
       grad.addColorStop(0, "#ffffff");
-      grad.addColorStop(1, "#c4b5fd");
+      grad.addColorStop(1, "#A0A8B4");
       pageCtx.fillStyle = grad;
       pageCtx.fillText("Master your", panelWidth * 0.08, headlineY);
       pageCtx.fillText("semester in glass.", panelWidth * 0.08, headlineY + lineH);
@@ -257,9 +255,9 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
       pageCtx.beginPath();
       pageCtx.roundRect(btnX, btnY, btnW, btnH, btnR);
       if (isHoveringOpenStudio) {
-        pageCtx.fillStyle = "#10B96F";
+        pageCtx.fillStyle = "#16C784";
         pageCtx.fill();
-        pageCtx.fillStyle = "#FAFCFB";
+        pageCtx.fillStyle = "#080A0E";
         pageCtx.font = `600 ${Math.max(12, 13 * S)}px 'Inter', sans-serif`;
       } else {
         pageCtx.fillStyle = "rgba(255, 255, 255, 0.12)";
@@ -280,11 +278,11 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
       pageCtx.textAlign = "left";
       pageCtx.textBaseline = "middle";
       pageCtx.font = `500 ${Math.max(12, 13 * S)}px 'Inter', sans-serif`;
-      pageCtx.fillStyle = "rgba(167, 139, 250, 0.9)";
+      pageCtx.fillStyle = "rgba(22, 199, 132, 0.9)";
       pageCtx.fillText("Explore syllabus →", linkX, linkY);
       if (isHoveringReadPaper) {
         const m = pageCtx.measureText("Explore syllabus →");
-        pageCtx.strokeStyle = "rgba(167, 139, 250, 1)";
+        pageCtx.strokeStyle = "rgba(22, 199, 132, 1)";
         pageCtx.lineWidth = 1;
         pageCtx.beginPath();
         pageCtx.moveTo(linkX, linkY + 9 * S);
@@ -319,12 +317,12 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
 
       // Mark + "SEMTRACK"
       const markSize = Math.max(12, 14 * S);
-      navCtx.strokeStyle = "rgba(16, 185, 111, 0.8)";
+      navCtx.strokeStyle = "rgba(22, 199, 132, 0.8)";
       navCtx.lineWidth = 1.5;
       navCtx.beginPath();
       navCtx.roundRect(navPad, navCenterY - markSize / 2, markSize, markSize, 3);
       navCtx.stroke();
-      navCtx.fillStyle = "rgba(16, 185, 111, 0.2)";
+      navCtx.fillStyle = "rgba(22, 199, 132, 0.1)";
       navCtx.fill();
 
       navCtx.font = `700 ${Math.max(13, 15 * S)}px 'Inter', sans-serif`;
@@ -342,7 +340,7 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
       // Sign in
       navCtx.textAlign = "right";
       navCtx.font = `500 ${Math.max(12, 13 * S)}px 'Inter', sans-serif`;
-      navCtx.fillStyle = "rgba(167, 139, 250, 0.95)";
+      navCtx.fillStyle = "rgba(22, 199, 132, 0.95)";
       navCtx.fillText("Sign In", blockWidth - navPad, navCenterY);
 
       navCtx.restore();
@@ -1379,7 +1377,7 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
   return (
     <div
       ref={containerRef}
-      className="relative w-full h-screen overflow-hidden bg-[#050507] text-[#ffffff] font-['Inter',sans-serif]"
+      className="relative w-full h-screen overflow-hidden bg-[#080A0E] text-[#F5F6F8] font-['Inter',sans-serif]"
     >
       {/* Return to Dashboard / Close button when in authenticated mode */}
       {showBackToDashboard && onClose && (
@@ -1412,7 +1410,7 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
               id="nav-mark"
               className="inline-block border-[1.5px] border-white/70 rounded-[3px] bg-white/[0.08]"
             />
-            <span id="nav-brand-text">Facet</span>
+            <span id="nav-brand-text">SEMTRACK</span>
           </div>
 
           <div
@@ -1437,14 +1435,14 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
         <div id="dom-panel" className="absolute left-0 w-full pointer-events-none">
           <div
             id="dom-eyebrow"
-            className="absolute text-[#A78BFA] font-medium tracking-[0.2em] uppercase select-text"
+            className="absolute text-[#16C784] font-medium tracking-[0.2em] uppercase select-text"
           >
             ACADEMIC PRODUCTIVITY OS · 5 CORE COURSES
           </div>
 
           <div
             id="dom-headline"
-            className="absolute font-semibold tracking-[-0.045em] leading-[0.97] bg-gradient-to-b from-[#ffffff] to-[#c4b5fd] bg-clip-text text-transparent select-text"
+            className="absolute font-semibold tracking-[-0.045em] leading-[0.97] bg-gradient-to-b from-[#F5F6F8] to-[#A0A8B4] bg-clip-text text-transparent select-text"
           >
             Master your
             <br />
@@ -1462,17 +1460,17 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
             <button
               id="btn-open-studio"
               onClick={onOpenStudio || onSignIn}
-              className="inline-flex items-center justify-center rounded-[8px] bg-white/[0.12] hover:!bg-[#10B96F] hover:!text-[#050507] hover:!border-[#10B96F] hover:!font-semibold hover:shadow-[0_0_28px_rgba(16,185,111,0.45)] text-white/95 border border-white/30 backdrop-blur-md transition-all active:scale-95"
+              className="inline-flex items-center justify-center rounded-[8px] bg-white/[0.08] hover:!bg-[#16C784] hover:!text-[#080A0E] hover:!border-[#16C784] hover:!font-semibold text-white/95 border border-white/15 backdrop-blur-md transition-all active:scale-95"
             >
               Sign In
             </button>
 
             <button
               id="link-read-paper"
-              className="group relative inline-flex items-center gap-1 text-[#A78BFA] hover:text-white font-medium bg-transparent border-0 cursor-pointer transition"
+              className="group relative inline-flex items-center gap-1 text-[#16C784] hover:text-white font-medium bg-transparent border-0 cursor-pointer transition"
             >
               <span>Explore syllabus →</span>
-              <span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#A78BFA] scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
+              <span className="absolute -bottom-0.5 left-0 w-full h-[1px] bg-[#16C784] scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
             </button>
           </div>
 
@@ -1501,7 +1499,7 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
       >
         <div className="absolute left-[30vw] w-[38vw] top-[28vh] max-w-2xl bg-black/60 backdrop-blur-xl p-8 rounded-3xl border border-white/10 shadow-smoked-deep">
           <h2 className="font-semibold text-[1.4vw] tracking-[-0.022em] text-white mb-[1.5vw] flex items-center gap-2">
-            <span className="h-2 w-2 rounded-full bg-[#10B96F] shadow-emerald-glow" />
+            <span className="h-2 w-2 rounded-full bg-[#16C784]" />
             5 Core Engineering Courses · 24 Units
           </h2>
 
@@ -1524,10 +1522,10 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
           </div>
 
           <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
-            <span className="text-xs text-[#A78BFA] font-mono">Target: 9.0+ CGPA</span>
+            <span className="text-xs text-[#16C784] font-mono">Target: 9.0+ CGPA</span>
             <button
               onClick={onSignIn}
-              className="px-4 py-2 rounded-xl bg-[#10B96F] text-black font-bold text-xs hover:bg-[#34D399] transition"
+              className="px-4 py-2 rounded-xl bg-[#16C784] text-[#080A0E] font-bold text-xs hover:opacity-90 transition"
             >
               Start Studying Now
             </button>
@@ -1540,23 +1538,23 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
         id="back-hit-area"
         className={`fixed z-40 -translate-x-1/2 -translate-y-1/2 cursor-pointer font-medium text-white transition-all duration-200 select-none bg-transparent border-0 ${
           isDefinitionsActive ? "flex" : "hidden"
-        } ${isBackHovered ? "!text-[#b9abff] scale-105" : ""}`}
+        } ${isBackHovered ? "!text-[#16C784] scale-105" : ""}`}
       >
         ← Back
       </button>
 
       {/* Accessible Static Fallback if WebGL is unavailable */}
       {!isSupported && (
-        <div className="fixed inset-0 z-50 bg-[#050507] p-8 overflow-y-auto flex items-center justify-center">
-          <div className="max-w-2xl w-full bg-[#131318] border border-white/15 rounded-3xl p-8 shadow-2xl">
+        <div className="fixed inset-0 z-50 bg-[#080A0E] p-8 overflow-y-auto flex items-center justify-center">
+          <div className="max-w-2xl w-full bg-[#11151C] border border-white/10 rounded-3xl p-8 shadow-2xl">
             <div className="flex justify-between items-center pb-4 border-b border-white/10 mb-6">
               <span className="font-bold text-lg text-white">SEMTRACK</span>
               <span className="text-sm text-white/60">Dashboard · Subjects · Timetable</span>
-              <button onClick={onSignIn} className="text-sm text-[#A78BFA] font-medium">
+              <button onClick={onSignIn} className="text-sm text-[#16C784] font-medium">
                 Sign in
               </button>
             </div>
-            <div className="text-xs text-[#A78BFA] tracking-widest uppercase mb-3">
+            <div className="text-xs text-[#16C784] tracking-widest uppercase mb-3">
               ACADEMIC PRODUCTIVITY OS
             </div>
             <h1 className="text-4xl font-bold mb-4 text-white">Master your semester.</h1>
@@ -1566,7 +1564,7 @@ export const GlassShardHero: React.FC<GlassShardHeroProps> = ({
             <div className="flex gap-4 items-center">
               <button
                 onClick={onOpenStudio || onSignIn}
-                className="px-5 py-2.5 rounded-lg bg-[#10B96F] text-black font-semibold text-sm"
+                className="px-5 py-2.5 rounded-lg bg-[#16C784] text-[#080A0E] font-semibold text-sm"
               >
                 Sign In
               </button>
